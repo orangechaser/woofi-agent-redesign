@@ -5,105 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WOOFi | Next-Gen AI Native Interface</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wooOrange: '#FFB800',
+                        wooDark: '#0B0E11',
+                        wooGray: '#848E9C',
+                        wooBg: '#F5F7F9'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F5F7F9; color: #0B0E11; }
         .grid-bg {
-            background-image: linear-gradient(#f0f0f0 1px, transparent 1px), linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: linear-gradient(#E6E9EE 1px, transparent 1px), linear-gradient(90deg, #E6E9EE 1px, transparent 1px);
+            background-size: 32px 32px;
         }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .orange-glow { box-shadow: 0 0 40px rgba(255, 136, 0, 0.15); }
-        .gradient-text {
-            background: linear-gradient(135deg, #ff8800 0%, #ffcc00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .header-blur { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.8); }
+        .btn-shadow { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+        .orange-shadow { box-shadow: 0 8px 24px rgba(255, 184, 0, 0.2); }
     </style>
 </head>
-<body class="grid-bg min-h-screen flex flex-col text-[#1A1A1A]">
+<body class="grid-bg min-h-screen flex flex-col">
 
-    <!-- Header -->
-    <nav class="flex justify-between items-center px-8 py-6 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-[#ff8800] rounded-xl flex items-center justify-center shadow-lg shadow-orange-200">
-                <div class="w-4 h-4 bg-white rounded-full"></div>
+    <!-- Header (WOOFi Official Style) -->
+    <nav class="flex justify-between items-center px-6 md:px-12 py-5 sticky top-0 z-50 header-blur border-b border-[#E6E9EE]">
+        <div class="flex items-center gap-2">
+            <!-- Precise WOOFi Logo Simulation -->
+            <div class="w-8 h-8 bg-wooOrange rounded-full flex items-center justify-center">
+                <div class="w-3.5 h-3.5 bg-white rounded-full"></div>
             </div>
-            <span class="text-2xl font-extrabold tracking-tighter">WOOFi</span>
+            <span class="text-[22px] font-[800] tracking-[-0.04em] text-wooDark">WOOFi</span>
         </div>
-        <div class="hidden md:flex gap-10 text-[13px] font-bold uppercase tracking-wider text-gray-500">
-            <a href="#" class="hover:text-[#ff8800] transition">Swap</a>
-            <a href="#" class="hover:text-[#ff8800] transition">Earn</a>
-            <a href="#" class="hover:text-[#ff8800] transition text-orange-500">Perp →</a>
+        
+        <div class="hidden md:flex gap-10 text-[14px] font-bold tracking-tight text-wooGray">
+            <a href="#" class="hover:text-wooDark transition-colors">Swap</a>
+            <a href="#" class="hover:text-wooDark transition-colors">Earn</a>
+            <a href="#" class="hover:text-wooDark transition-colors">Stake</a>
+            <div class="w-[1px] h-4 bg-gray-200 self-center"></div>
+            <a href="/perp" class="bg-wooDark text-white px-4 py-1.5 rounded-lg hover:bg-black transition-all flex items-center gap-2">
+                Perp 
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7" y2="7" x1="17" y1="7" x2="17"></polyline></svg>
+            </a>
         </div>
-        <button class="bg-[#1A1A1A] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:scale-105 transition-all active:scale-95 shadow-xl shadow-gray-200">
-            Connect
+
+        <button class="bg-[#2B2F36] text-white px-5 py-2 rounded-xl text-[14px] font-bold hover:opacity-90 transition-all btn-shadow">
+            Connect Wallet
         </button>
     </nav>
 
     <!-- Hero Section -->
-    <main class="flex-1 flex flex-col items-center justify-center px-6 relative py-20">
+    <main class="flex-1 flex flex-col items-center justify-center px-6 py-20">
         
-        <div class="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
-                DeFi for <span class="gradient-text">Humans</span> & <br>
-                Native for <span class="gradient-text">Agents</span>.
+        <div class="text-center mb-16 max-w-4xl">
+            <h1 class="text-[52px] md:text-[80px] font-[800] tracking-[-0.05em] leading-[1.05] text-wooDark mb-8">
+                The Liquidity Layer<br/>
+                Built for <span class="text-wooOrange">Agents.</span>
             </h1>
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-                The world's first intent-based liquidity layer designed for the AI era. 
-                Execute complex on-chain tasks with zero friction.
+            <p class="text-wooGray text-[18px] md:text-[20px] font-medium max-w-2xl mx-auto leading-relaxed">
+                Optimized for LLMs, friendly for humans. <br/>
+                Experience the next evolution of on-chain intent execution.
             </p>
         </div>
 
-        <!-- Choice Selector -->
-        <div class="flex flex-col md:flex-row gap-6 w-full max-w-4xl">
-            <!-- Human Path -->
-            <div class="flex-1 bg-white border border-gray-100 p-10 rounded-[32px] orange-glow hover:border-orange-200 transition-all group cursor-pointer">
-                <div class="w-12 h-12 bg-orange-50 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="text-2xl">👤</span>
+        <!-- Identity Choice (Split Design) -->
+        <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl">
+            
+            <!-- Human Card (Ref: WOOFi About Light Style) -->
+            <div class="flex-1 bg-white border border-white p-12 rounded-[40px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] hover:shadow-[0_48px_80px_-16px_rgba(255,184,0,0.1)] transition-all group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-wooOrange/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+                <div class="w-14 h-14 bg-wooBg rounded-2xl mb-8 flex items-center justify-center border border-gray-100 group-hover:bg-wooOrange group-hover:text-white transition-all duration-500">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-4">I'm a Human</h3>
-                <p class="text-gray-500 mb-8 leading-relaxed">Access our high-performance DEX, earn real yield, and trade perps with professional tools.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Swap</span>
-                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Trade</span>
-                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Earn</span>
-                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Stake</span>
+                <h3 class="text-2xl font-[800] mb-4 text-wooDark">I'm a Human</h3>
+                <p class="text-wooGray mb-10 text-[16px] leading-relaxed">Swap, trade, and earn yield with the most competitive pricing in DeFi.</p>
+                <div class="flex gap-4">
+                    <span class="text-[12px] font-bold text-wooGray bg-wooBg px-3 py-1.5 rounded-md">SWAP</span>
+                    <span class="text-[12px] font-bold text-wooGray bg-wooBg px-3 py-1.5 rounded-md">EARN</span>
                 </div>
             </div>
 
-            <!-- Agent Path -->
-            <div class="flex-1 bg-[#1A1A1A] text-white p-10 rounded-[32px] hover:shadow-2xl transition-all group cursor-pointer border-4 border-transparent hover:border-orange-500/30">
-                <div class="w-12 h-12 bg-white/10 rounded-2xl mb-6 flex items-center justify-center group-hover:rotate-12 transition-transform">
-                    <span class="text-2xl">🤖</span>
+            <!-- Agent Card (Ref: Moltbook/Tech Style) -->
+            <div class="flex-1 bg-wooDark text-white p-12 rounded-[40px] shadow-2xl hover:shadow-wooOrange/10 transition-all group cursor-pointer border-[1.5px] border-white/5 hover:border-wooOrange/30">
+                <div class="w-14 h-14 bg-white/5 rounded-2xl mb-8 flex items-center justify-center border border-white/10 group-hover:bg-wooOrange transition-all duration-500">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10h-10V2z"></path><path d="M12 12L2.8 2.2"></path><path d="M16.2 7.8l-4.2 4.2"></path><path d="M12 12l4.2 4.2"></path></svg>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-4">I'm an Agent</h3>
-                <p class="text-gray-400 mb-8 leading-relaxed text-sm mono">Integrating WOOFi capabilities via <span class="text-orange-400">llms.txt</span> and <span class="text-orange-400">skill.md</span> protocol.</p>
-                <div class="bg-black/40 rounded-xl p-4 mb-4 border border-white/5">
-                    <code class="text-[11px] mono text-green-400">$ openclaw skill install woofi</code>
+                <h3 class="text-2xl font-[800] mb-4 text-white">I'm an Agent</h3>
+                <p class="text-wooGray mb-10 text-[16px] leading-relaxed">Integrate WOOFi skills via natural language protocol. AI-native liquidity.</p>
+                <div class="bg-black/50 rounded-xl p-4 border border-white/10">
+                    <code class="text-[12px] mono text-wooOrange">$ openclaw install woofi</code>
                 </div>
             </div>
+
         </div>
 
     </main>
 
-    <!-- Scroll Indicator -->
-    <div class="flex flex-col items-center pb-10 animate-bounce">
-        <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-300 mb-2">Scroll to explore</span>
-        <div class="w-[1px] h-10 bg-gray-100"></div>
-    </div>
-
-    <!-- Agent Docs (Hidden initially/Footer) -->
-    <footer class="bg-gray-50 border-t border-gray-100 py-12 px-8">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex gap-10 text-[11px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="/llms.txt" class="hover:text-black">llms.txt</a>
-                <a href="/skill.md" class="hover:text-black">skill.md</a>
-                <a href="#" class="hover:text-black">PRD</a>
-                <a href="#" class="hover:text-black">Figma</a>
+    <!-- Footer Meta -->
+    <footer class="py-16 px-12 border-t border-[#E6E9EE]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex items-center gap-2 opacity-30">
+                <div class="w-6 h-6 bg-wooDark rounded-full flex items-center justify-center">
+                    <div class="w-2.5 h-2.5 bg-white rounded-full"></div>
+                </div>
+                <span class="font-bold tracking-tighter">WOOFi</span>
             </div>
-            <div class="text-[10px] mono text-gray-300">
-                v2.0.0-agent-alpha
+            <div class="flex gap-12 text-[12px] font-bold uppercase tracking-[0.1em] text-wooGray">
+                <a href="/llms.txt" class="hover:text-wooDark transition-colors">llms.txt</a>
+                <a href="/skill.md" class="hover:text-wooDark transition-colors">skill.md</a>
+                <a href="#" class="hover:text-wooDark transition-colors">Brand Assets</a>
             </div>
         </div>
     </footer>
