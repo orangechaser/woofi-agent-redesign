@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOOFi | The Agent-Native Liquidity Layer</title>
+    <title>WOOFi | DeFi for Humans. Native for Agents.</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Using Inter and a display font that mimics DIN 2014 -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         wooBlack: '#07080A',    // DN-10
-                        wooCyan: '#59B0FE',     // From Gradient Start
-                        wooCyanDark: '#26FEFE', // From Gradient End
-                        wooTextSec: 'rgba(255, 255, 255, 0.54)',
-                        wooLine: 'rgba(255, 255, 255, 0.08)',
+                        wooDarker: '#131519',   // DN-9
+                        wooDark: '#181C23',     // DN-8
+                        wooCyan: '#59B0FE',     // Brand Start
+                        wooCyanDark: '#26FEFE', // Brand End
+                        wooLine: 'rgba(255, 255, 255, 0.08)', // Line-Dark 8%
+                        wooTextMain: '#FFFFFF', // Text-Dark 98%
+                        wooTextSec: 'rgba(255, 255, 255, 0.54)', // Text-Dark 54%
                     },
                     fontFamily: {
-                        din: ['Oswald', 'Inter', 'sans-serif'], // Mimic DIN 2014
+                        din: ['Oswald', 'Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #07080A; color: #FFFFFF; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background-color: #07080A; color: #FFFFFF; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         .grid-bg {
-            background-image: radial-gradient(rgba(89, 176, 254, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: radial-gradient(rgba(89, 176, 254, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
         }
         .woo-gradient-text {
             background: linear-gradient(90deg, #59B0FE 0%, #26FEFE 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero-title { font-family: 'Oswald', sans-serif; font-size: 84px; font-weight: 700; line-height: 1.1; letter-spacing: 0.96px; text-transform: uppercase; }
         .nav-link { color: rgba(255, 255, 255, 0.54); font-weight: 500; font-size: 14px; transition: color 0.2s; }
         .nav-link:hover { color: #FFFFFF; }
         
@@ -45,16 +46,16 @@
             color: #07080A;
             font-weight: 800;
             border-radius: 999px;
-            padding: 4px 4px 4px 24px;
+            padding: 4px 4px 4px 20px;
             display: inline-flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            font-size: 13px;
             transition: all 0.3s;
         }
-        .launch-btn:hover { opacity: 0.9; transform: translateY(-2px); }
         .circle-arrow {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: #07080A;
             border-radius: 50%;
             display: flex;
@@ -63,121 +64,101 @@
             color: #59B0FE;
         }
 
-        .stat-card { border-left: 1px solid rgba(89, 176, 254, 0.2); padding-left: 20px; }
-        .stat-value { font-family: 'Oswald', sans-serif; font-size: 32px; color: #59B0FE; }
-        .stat-label { font-size: 12px; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 1px; }
-
         .path-card { 
-            background: rgba(19, 21, 25, 0.5); 
+            background: #131519; 
             border: 1px solid rgba(255,255,255,0.08); 
             border-radius: 24px; 
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .path-card:hover { border-color: #59B0FE; background: rgba(19, 21, 25, 0.8); }
-        .blue-glow {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(89, 176, 254, 0.1);
-            filter: blur(80px);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-        }
+        .path-card:hover { border-color: rgba(89, 176, 254, 0.4); transform: translateY(-4px); background: #181C23; }
+        
+        /* Ensure fold optimization */
+        .hero-section { min-height: calc(100vh - 64px); display: flex; flex-direction: column; justify-content: center; padding-top: 40px; padding-bottom: 40px; }
     </style>
 </head>
 <body class="grid-bg min-h-screen flex flex-col">
 
-    <!-- Header (Figma Exact) -->
-    <nav class="h-16 flex justify-between items-center px-8 sticky top-0 z-50 bg-[#07080A]/80 backdrop-blur-xl border-b border-wooLine">
-        <div class="flex items-center gap-12">
+    <!-- Header (Custom Tabs + More Dropdown Style) -->
+    <nav class="h-16 flex justify-between items-center px-8 sticky top-0 z-50 bg-[#07080A]/90 backdrop-blur-xl border-b border-wooLine">
+        <div class="flex items-center gap-10">
             <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                    <div class="w-2.5 h-2.5 bg-wooBlack rounded-full"></div>
+                <!-- WOOFi Official Logo Representation -->
+                <div class="flex items-center gap-1.5">
+                    <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                        <div class="w-2.5 h-2.5 bg-wooBlack rounded-full"></div>
+                    </div>
+                    <span class="text-[22px] font-extrabold tracking-[-0.04em] text-white">WOOFi</span>
                 </div>
-                <span class="text-xl font-bold font-din">WOOFi</span>
             </div>
-            <div class="hidden lg:flex items-center gap-8">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Feature</a>
-                <a href="#" class="nav-link">NFTs</a>
-                <a href="#" class="nav-link">Trade</a>
+            <div class="hidden lg:flex items-center gap-7">
+                <a href="#" class="nav-link text-white font-bold">Home</a>
+                <a href="#" class="nav-link">Swap</a>
+                <a href="#" class="nav-link">Perps</a>
+                <a href="#" class="nav-link">Earn</a>
+                <a href="#" class="nav-link">Stake</a>
+                <div class="flex items-center gap-1 nav-link cursor-pointer group">
+                    More
+                    <svg class="w-3 h-3 group-hover:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
             </div>
         </div>
         <div class="launch-btn cursor-pointer">
             LAUNCH APP
             <div class="circle-arrow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="flex-1 max-w-7xl mx-auto w-full px-8 pt-32 pb-20 relative">
+    <!-- Main Hero (Fold-Optimized) -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-6 flex flex-col justify-center py-10 md:py-20">
         
-        <div class="mb-20">
-            <h1 class="hero-title mb-6">
-                The easiest way<br/>
-                <span class="woo-gradient-text">to DeFi.</span>
+        <div class="text-center mb-10 md:mb-16">
+            <h1 class="font-din text-[48px] md:text-[68px] font-bold tracking-tight leading-[1.0] text-white mb-6 uppercase">
+                DeFi for <span class="woo-gradient-text">Humans.</span><br/>
+                Native for <span class="woo-gradient-text">Agents.</span>
             </h1>
-            <p class="text-wooTextSec text-xl max-w-xl leading-relaxed mb-12">
-                All the tools you need, in one place. Engineered for the next generation of AI-driven intent execution.
+            <p class="text-wooTextSec text-[16px] md:text-[18px] max-w-xl mx-auto leading-relaxed">
+                The Intelligent Liquidity Layer. Execute complex on-chain intent <br class="hidden md:block"/>
+                via human intuition or agent automation.
             </p>
-
-            <!-- Stats Bar (Figma Style) -->
-            <div class="flex gap-16 mb-20">
-                <div class="stat-card">
-                    <div class="stat-value">$4B+</div>
-                    <div class="stat-label">Volume Traded</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">100M</div>
-                    <div class="stat-label">Agents Active</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">60K+</div>
-                    <div class="stat-label">Skills Installed</div>
-                </div>
-            </div>
         </div>
 
-        <!-- Identity Choice -->
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl">
-            <!-- Human -->
-            <div class="path-card p-10 group cursor-pointer">
-                <div class="blue-glow"></div>
-                <div class="w-12 h-12 mb-8 flex items-center justify-center">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#59B0FE" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <!-- Identity Split (Guaranteed Above the Fold) -->
+        <div class="flex flex-col md:flex-row gap-6 w-full max-w-4xl mx-auto">
+            
+            <!-- Path: Human -->
+            <div class="flex-1 path-card p-7 md:p-10 group cursor-pointer">
+                <div class="w-10 h-10 bg-white/5 rounded-xl mb-6 flex items-center justify-center border border-white/5 group-hover:bg-wooCyan group-hover:text-wooBlack transition-all">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
-                <h3 class="text-2xl font-bold mb-4">I'm a Human</h3>
-                <p class="text-wooTextSec leading-relaxed mb-8">Professional-grade liquidity and yield protocols accessible to everyone.</p>
-                <div class="text-[10px] font-black tracking-widest text-[#59B0FE] uppercase">Explore Ecosystem →</div>
+                <h3 class="text-xl md:text-2xl font-bold mb-3">I'm a Human</h3>
+                <p class="text-wooTextSec text-[14px] mb-6 md:mb-8 leading-relaxed">Trade perps and earn yield with the most competitive pricing in DeFi.</p>
+                <div class="text-[10px] font-black tracking-widest text-wooCyan uppercase">Explore Features →</div>
             </div>
 
-            <!-- Agent -->
-            <div class="path-card p-10 group cursor-pointer border-wooCyan/20">
-                <div class="blue-glow"></div>
-                <div class="w-12 h-12 mb-8 flex items-center justify-center">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#26FEFE" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <!-- Path: Agent -->
+            <div class="flex-1 path-card p-7 md:p-10 group cursor-pointer border-wooCyan/20 bg-wooCyan/[0.02]">
+                <div class="w-10 h-10 bg-wooCyan/10 rounded-xl mb-6 flex items-center justify-center border border-wooCyan/20 group-hover:bg-wooCyan group-hover:text-wooBlack transition-all">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 woo-gradient-text">I'm an Agent</h3>
-                <p class="text-wooTextSec leading-relaxed mb-8">Seamlessly execute on-chain intent via our AI-native skill protocols.</p>
-                <div class="bg-wooCyan/5 rounded-lg p-3 border border-wooCyan/20">
-                    <code class="text-xs font-mono text-wooCyan">npm install @woofi/agent-skill</code>
+                <h3 class="text-xl md:text-2xl font-bold mb-3 woo-gradient-text">I'm an Agent</h3>
+                <p class="text-wooTextSec text-[14px] mb-6 md:mb-8 leading-relaxed">Scale operations on-chain via LLM-native skill protocols and skill.md.</p>
+                <div class="bg-black/40 rounded-lg p-3 border border-wooLine">
+                    <code class="text-[11px] font-mono text-wooCyan/80">openclaw install @woofi/agent</code>
                 </div>
             </div>
+
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="p-12 border-t border-wooLine text-center">
-        <div class="flex justify-center gap-12 text-[10px] font-black tracking-[0.3em] text-wooTextSec uppercase">
-            <a href="#" class="hover:text-wooCyan transition-colors">llms.txt</a>
-            <a href="#" class="hover:text-wooCyan transition-colors">skill.md</a>
-            <a href="#" class="hover:text-wooCyan transition-colors">Documentation</a>
+    <!-- Footer Meta -->
+    <footer class="py-8 px-8 border-t border-wooLine bg-wooBlack/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto flex justify-center gap-12 text-[10px] font-bold uppercase tracking-widest text-wooTextSec">
+            <a href="/llms.txt" class="hover:text-wooCyan transition-colors">llms.txt</a>
+            <a href="/skill.md" class="hover:text-wooCyan transition-colors">skill.md</a>
+            <a href="#" class="hover:text-wooCyan transition-colors">API Docs</a>
         </div>
     </footer>
 
