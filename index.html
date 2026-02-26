@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOOFi | Next-Gen AI Native Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; }
+        .grid-bg {
+            background-image: linear-gradient(#f0f0f0 1px, transparent 1px), linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .orange-glow { box-shadow: 0 0 40px rgba(255, 136, 0, 0.15); }
+        .gradient-text {
+            background: linear-gradient(135deg, #ff8800 0%, #ffcc00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="grid-bg min-h-screen flex flex-col text-[#1A1A1A]">
+
+    <!-- Header -->
+    <nav class="flex justify-between items-center px-8 py-6 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-[#ff8800] rounded-xl flex items-center justify-center shadow-lg shadow-orange-200">
+                <div class="w-4 h-4 bg-white rounded-full"></div>
+            </div>
+            <span class="text-2xl font-extrabold tracking-tighter">WOOFi</span>
+        </div>
+        <div class="hidden md:flex gap-10 text-[13px] font-bold uppercase tracking-wider text-gray-500">
+            <a href="#" class="hover:text-[#ff8800] transition">Swap</a>
+            <a href="#" class="hover:text-[#ff8800] transition">Earn</a>
+            <a href="#" class="hover:text-[#ff8800] transition text-orange-500">Perp →</a>
+        </div>
+        <button class="bg-[#1A1A1A] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:scale-105 transition-all active:scale-95 shadow-xl shadow-gray-200">
+            Connect
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="flex-1 flex flex-col items-center justify-center px-6 relative py-20">
+        
+        <div class="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
+                DeFi for <span class="gradient-text">Humans</span> & <br>
+                Native for <span class="gradient-text">Agents</span>.
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
+                The world's first intent-based liquidity layer designed for the AI era. 
+                Execute complex on-chain tasks with zero friction.
+            </p>
+        </div>
+
+        <!-- Choice Selector -->
+        <div class="flex flex-col md:flex-row gap-6 w-full max-w-4xl">
+            <!-- Human Path -->
+            <div class="flex-1 bg-white border border-gray-100 p-10 rounded-[32px] orange-glow hover:border-orange-200 transition-all group cursor-pointer">
+                <div class="w-12 h-12 bg-orange-50 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span class="text-2xl">👤</span>
+                </div>
+                <h3 class="text-2xl font-extrabold mb-4">I'm a Human</h3>
+                <p class="text-gray-500 mb-8 leading-relaxed">Access our high-performance DEX, earn real yield, and trade perps with professional tools.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Swap</span>
+                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Trade</span>
+                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Earn</span>
+                    <span class="px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-400">Stake</span>
+                </div>
+            </div>
+
+            <!-- Agent Path -->
+            <div class="flex-1 bg-[#1A1A1A] text-white p-10 rounded-[32px] hover:shadow-2xl transition-all group cursor-pointer border-4 border-transparent hover:border-orange-500/30">
+                <div class="w-12 h-12 bg-white/10 rounded-2xl mb-6 flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <span class="text-2xl">🤖</span>
+                </div>
+                <h3 class="text-2xl font-extrabold mb-4">I'm an Agent</h3>
+                <p class="text-gray-400 mb-8 leading-relaxed text-sm mono">Integrating WOOFi capabilities via <span class="text-orange-400">llms.txt</span> and <span class="text-orange-400">skill.md</span> protocol.</p>
+                <div class="bg-black/40 rounded-xl p-4 mb-4 border border-white/5">
+                    <code class="text-[11px] mono text-green-400">$ openclaw skill install woofi</code>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scroll Indicator -->
+    <div class="flex flex-col items-center pb-10 animate-bounce">
+        <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-300 mb-2">Scroll to explore</span>
+        <div class="w-[1px] h-10 bg-gray-100"></div>
+    </div>
+
+    <!-- Agent Docs (Hidden initially/Footer) -->
+    <footer class="bg-gray-50 border-t border-gray-100 py-12 px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex gap-10 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="/llms.txt" class="hover:text-black">llms.txt</a>
+                <a href="/skill.md" class="hover:text-black">skill.md</a>
+                <a href="#" class="hover:text-black">PRD</a>
+                <a href="#" class="hover:text-black">Figma</a>
+            </div>
+            <div class="text-[10px] mono text-gray-300">
+                v2.0.0-agent-alpha
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
