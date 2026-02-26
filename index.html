@@ -3,49 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOOFi | Agent-Native Liquidity</title>
+    <title>WOOFi | Agent-Native Liquidity Layer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        wooOrange: '#FFB800',
-                        wooDark: '#0B0E11',
-                        wooGray: '#848E9C',
-                        wooBorder: '#1E2329',
-                        wooBtnGray: '#2B2F36'
+                        // WOOFi Official Palette from Figma Specs
+                        wooBlack: '#07080A',    // DN-10
+                        wooDarker: '#131519',   // DN-9
+                        wooDark: '#181C23',     // DN-8
+                        wooOrange: '#FFB65D',   // Warning-4
+                        wooOrangeLight: '#FFCFBB', // Warning-3
+                        wooLine: 'rgba(255, 255, 255, 0.08)', // Line-Dark 8%
+                        wooTextMain: '#FFFFFF', // Text-Dark 98%
+                        wooTextSec: 'rgba(255, 255, 255, 0.54)', // Text-Dark 54%
+                        wooTextMute: 'rgba(255, 255, 255, 0.36)', // Text-Dark 36%
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0B0E11; color: #FFFFFF; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background-color: #07080A; color: #FFFFFF; -webkit-font-smoothing: antialiased; }
         .grid-bg {
-            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
             background-size: 32px 32px;
         }
         .header-height { height: 64px; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .nav-link { color: #848E9C; font-weight: 500; font-size: 14px; transition: color 0.2s; }
+        .nav-link { color: rgba(255, 255, 255, 0.54); font-weight: 500; font-size: 14px; transition: color 0.2s; }
         .nav-link:hover { color: #FFFFFF; }
-        .perp-btn { background-color: #FFB800; color: #0B0E11; font-weight: 700; border-radius: 8px; padding: 6px 14px; font-size: 14px; }
-        .connect-btn { background-color: #2B2F36; color: #FFFFFF; font-weight: 600; border-radius: 12px; padding: 8px 16px; font-size: 14px; border: 1px solid rgba(255,255,255,0.05); }
-        .hero-title { font-size: 72px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; }
-        .choice-card { background: #161A1F; border: 1px solid #1E2329; border-radius: 24px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .choice-card:hover { border-color: rgba(255,184,0,0.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .perp-btn { background-color: #FFB65D; color: #07080A; font-weight: 700; border-radius: 8px; padding: 6px 16px; font-size: 14px; }
+        .connect-btn { background-color: #181C23; color: #FFFFFF; font-weight: 600; border-radius: 12px; padding: 8px 20px; font-size: 14px; border: 1px solid rgba(255,255,255,0.08); }
+        .hero-title { font-size: 80px; font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; }
+        .choice-card { background: #131519; border: 1px solid rgba(255,255,255,0.08); border-radius: 32px; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+        .choice-card:hover { border-color: rgba(255,182,93,0.4); transform: translateY(-8px); background: #181C23; }
+        .agent-gradient { background: linear-gradient(135deg, rgba(255,182,93,0.1) 0%, transparent 100%); }
     </style>
 </head>
 <body class="grid-bg min-h-screen flex flex-col">
 
-    <!-- Header (WOOFi Precise Match) -->
-    <nav class="header-height flex justify-between items-center px-6 md:px-8 sticky top-0 z-50 bg-[#0B0E11]/90 backdrop-blur-md border-b border-[#1E2329]">
-        <div class="flex items-center gap-10">
+    <!-- Header (Fygma-Spec Exact Alignment) -->
+    <nav class="header-height flex justify-between items-center px-8 sticky top-0 z-50 bg-[#07080A]/80 backdrop-blur-xl border-b border-wooLine">
+        <div class="flex items-center gap-12">
             <div class="flex items-center gap-2">
                 <div class="w-7 h-7 bg-wooOrange rounded-full flex items-center justify-center">
-                    <div class="w-3.5 h-3.5 bg-wooDark rounded-full"></div>
+                    <div class="w-3.5 h-3.5 bg-wooBlack rounded-full"></div>
                 </div>
                 <span class="text-[20px] font-extrabold tracking-tight">WOOFi</span>
             </div>
@@ -54,54 +59,56 @@
                 <a href="#" class="nav-link">Swap</a>
                 <a href="#" class="nav-link">Earn</a>
                 <a href="#" class="nav-link">Stake</a>
-                <a href="/perp" class="perp-btn hover:brightness-110 transition-all">Perp</a>
+                <a href="/perp" class="perp-btn hover:opacity-90 transition-all">Perp</a>
             </div>
         </div>
 
         <div class="flex items-center gap-4">
-            <button class="connect-btn hover:bg-[#363B45] transition-all">Connect Wallet</button>
+            <button class="connect-btn hover:bg-[#252A31] transition-all">Connect Wallet</button>
         </div>
     </nav>
 
     <!-- Main Hero -->
-    <main class="flex-1 flex flex-col items-center justify-center px-6 py-20">
+    <main class="flex-1 flex flex-col items-center justify-center px-6 py-24 relative overflow-hidden">
         
-        <div class="text-center mb-16 max-w-5xl">
+        <!-- Subtle Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-wooOrange/5 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="text-center mb-20 max-w-5xl">
             <h1 class="hero-title mb-8">
-                The Agent-Native<br/>
-                <span class="text-wooOrange">Liquidity Layer.</span>
+                The AI-Native<br/>
+                <span style="color: #FFB65D">Liquidity Layer.</span>
             </h1>
-            <p class="text-wooGray text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+            <p class="text-wooTextSec text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
                 Experience the next evolution of on-chain intent execution.<br/>
                 Optimized for Agents. Built for Humans.
             </p>
         </div>
 
-        <!-- Split Path -->
-        <div class="flex flex-col md:flex-row gap-6 w-full max-w-4xl">
+        <!-- Identity Split (Pixel Perfect Cards) -->
+        <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl">
             
-            <!-- Path: Human -->
-            <div class="flex-1 choice-card p-10 group cursor-pointer relative overflow-hidden">
-                <div class="w-12 h-12 bg-white/5 rounded-2xl mb-8 flex items-center justify-center border border-white/10 group-hover:bg-wooOrange group-hover:text-wooDark transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <!-- Human Card -->
+            <div class="flex-1 choice-card p-12 group cursor-pointer relative">
+                <div class="w-14 h-14 bg-white/5 rounded-2xl mb-8 flex items-center justify-center border border-white/5 group-hover:bg-wooOrange group-hover:text-wooBlack transition-all duration-500">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
-                <h3 class="text-2xl font-bold mb-3">I'm a Human</h3>
-                <p class="text-wooGray text-base mb-8">Professional trading and high-yield earning tools for every user.</p>
-                <div class="inline-flex items-center text-xs font-bold text-wooGray gap-3">
-                    <span class="border border-wooBorder px-2 py-1 rounded">DEX</span>
-                    <span class="border border-wooBorder px-2 py-1 rounded">YIELD</span>
+                <h3 class="text-3xl font-extrabold mb-4 text-wooTextMain">I'm a Human</h3>
+                <p class="text-wooTextSec text-lg mb-10 leading-relaxed">Access the industry's best pricing, professional trading tools and real yield.</p>
+                <div class="flex gap-4">
+                    <span class="text-[12px] font-bold tracking-widest text-wooTextMute border border-wooLine px-3 py-1.5 rounded-lg group-hover:border-wooOrange/30">DEX ENGINE</span>
                 </div>
             </div>
 
-            <!-- Path: Agent -->
-            <div class="flex-1 choice-card p-10 group cursor-pointer relative overflow-hidden border-wooOrange/20 bg-wooOrange/[0.02]">
-                <div class="w-12 h-12 bg-wooOrange/10 rounded-2xl mb-8 flex items-center justify-center border border-wooOrange/20 group-hover:bg-wooOrange group-hover:text-wooDark transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <!-- Agent Card -->
+            <div class="flex-1 choice-card p-12 group cursor-pointer relative agent-gradient">
+                <div class="w-14 h-14 bg-wooOrange/10 rounded-2xl mb-8 flex items-center justify-center border border-wooOrange/20 group-hover:bg-wooOrange group-hover:text-wooBlack transition-all duration-500">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 </div>
-                <h3 class="text-2xl font-bold mb-3 text-wooOrange">I'm an Agent</h3>
-                <p class="text-wooGray text-base mb-8">Native integration for AI Agents via natural language protocols.</p>
-                <div class="bg-black/40 rounded-lg p-3 border border-wooBorder">
-                    <code class="text-[11px] mono text-wooGray">openclaw install woofi</code>
+                <h3 class="text-3xl font-extrabold mb-4" style="color: #FFB65D">I'm an Agent</h3>
+                <p class="text-wooTextSec text-lg mb-10 leading-relaxed">Seamlessly integrate liquidity via LLM-native skill protocols and skill.md.</p>
+                <div class="bg-black/60 rounded-xl p-4 border border-wooLine">
+                    <code class="text-[13px] font-mono text-wooOrange/80">openclaw skill install woofi</code>
                 </div>
             </div>
 
@@ -109,12 +116,20 @@
 
     </main>
 
-    <!-- Simple Bottom Links (Agent Focused) -->
-    <footer class="py-12 px-8 border-t border-wooBorder mt-auto">
-        <div class="max-w-4xl mx-auto flex justify-center gap-10 text-[11px] font-bold uppercase tracking-widest text-wooGray">
-            <a href="/llms.txt" class="hover:text-wooOrange">llms.txt</a>
-            <a href="/skill.md" class="hover:text-wooOrange">skill.md</a>
-            <a href="#" class="hover:text-wooOrange">Protocol API</a>
+    <!-- Footer Meta -->
+    <footer class="py-16 px-12 border-t border-wooLine mt-auto bg-wooDarker/30">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="flex items-center gap-3 opacity-30">
+                <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                    <div class="w-2.5 h-2.5 bg-wooBlack rounded-full"></div>
+                </div>
+                <span class="text-lg font-extrabold tracking-tighter">WOOFi</span>
+            </div>
+            <div class="flex gap-12 text-[12px] font-bold uppercase tracking-[0.2em] text-wooTextMute">
+                <a href="/llms.txt" class="hover:text-wooOrange transition-colors">llms.txt</a>
+                <a href="/skill.md" class="hover:text-wooOrange transition-colors">skill.md</a>
+                <a href="#" class="hover:text-wooOrange transition-colors">Protocol API</a>
+            </div>
         </div>
     </footer>
 
