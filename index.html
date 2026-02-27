@@ -27,7 +27,7 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #07080A; color: #FFFFFF; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #07080A; color: #FFFFFF; -webkit-font-smoothing: antialiased; overflow: hidden; }
         .grid-bg {
             background-image: radial-gradient(rgba(0, 181, 255, 0.04) 1px, transparent 1px);
             background-size: 32px 32px;
@@ -48,15 +48,15 @@
             color: #07080A;
             font-weight: 800;
             border-radius: 999px;
-            padding: 4px 4px 4px 20px;
+            padding: 3px 3px 3px 18px;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            font-size: 13px;
+            gap: 10px;
+            font-size: 12px;
         }
         .circle-arrow {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: #07080A;
             border-radius: 50%;
             display: flex;
@@ -76,9 +76,9 @@
         .path-card:hover { border-color: rgba(0, 181, 255, 0.4); transform: translateY(-4px); background: #181C23; }
         
         /* Stats Styling */
-        .stat-item { border-left: 1px solid rgba(0, 181, 255, 0.2); padding-left: 20px; }
-        .stat-val { font-family: 'Oswald', sans-serif; font-size: 28px; color: #00B5FF; line-height: 1; }
-        .stat-lab { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .stat-item { border-left: 1px solid rgba(0, 181, 255, 0.1); padding-left: 16px; }
+        .stat-val { font-family: 'Oswald', sans-serif; font-size: 24px; color: #00B5FF; line-height: 1; }
+        .stat-lab { font-size: 10px; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
         /* Dropdown Style */
         .dropdown-menu { 
@@ -98,7 +98,7 @@
         .dropdown-item:hover { background: rgba(255,255,255,0.05); color: #FFFFFF; }
     </style>
 </head>
-<body class="grid-bg min-h-screen flex flex-col">
+<body class="grid-bg h-screen flex flex-col">
 
     <!-- Header -->
     <nav class="h-16 flex justify-between items-center px-8 sticky top-0 z-50 bg-[#07080A]/90 backdrop-blur-xl border-b border-wooLine">
@@ -122,9 +122,7 @@
                 <a href="https://woofi.com/swap/earn" class="nav-link">Earn</a>
                 <a href="https://woofi.com/swap/stake" class="nav-link">Stake</a>
                 <div class="relative group h-16 flex items-center">
-                    <div class="flex items-center gap-1 nav-link cursor-pointer">
-                        More <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </div>
+                    <div class="flex items-center gap-1 nav-link cursor-pointer">More <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item block">Docs</a>
                         <a href="#" class="dropdown-item block">Analytics</a>
@@ -136,30 +134,29 @@
         <a href="https://woofi.com/" class="launch-btn">LAUNCH APP<div class="circle-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></a>
     </nav>
 
-    <!-- Main Content (Tight Layout for 14" Mac) -->
-    <main class="flex-1 flex flex-col justify-center px-8 py-6 max-w-7xl mx-auto w-full">
+    <!-- Main Hero -->
+    <main class="flex-1 flex flex-col justify-center px-8 py-4 max-w-6xl mx-auto w-full">
         
-        <!-- Header Row: Icon + Title Side-by-Side -->
-        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mb-8 text-center md:text-left">
-            <div class="w-16 h-16 md:w-24 md:h-24 bg-wooOrange/10 rounded-3xl flex items-center justify-center border border-wooOrange/20 shadow-[0_0_50px_rgba(255,182,93,0.1)]">
-                <div class="w-8 h-8 md:w-12 md:h-12 bg-wooOrange rounded-full flex items-center justify-center"><div class="w-4 h-4 md:w-6 md:h-6 bg-wooBlack rounded-full"></div></div>
-            </div>
-            <div class="max-w-2xl">
-                <h1 class="font-din text-[40px] md:text-[56px] font-bold tracking-tight leading-[1.1] uppercase">
-                    DeFi for <span class="woo-gradient-text">Humans.</span><br/>
-                    Native for <span class="woo-gradient-text">Agents.</span>
-                </h1>
-            </div>
+        <div class="text-center mb-8">
+            <h1 class="font-din text-[44px] md:text-[64px] font-bold tracking-tight leading-[1.0] text-white mb-4 uppercase">
+                DeFi for <span class="woo-gradient-text">Humans.</span><br/>
+                Native for <span class="woo-gradient-text">Agents.</span>
+            </h1>
+            <p class="text-wooTextSec text-[15px] md:text-[17px] max-w-xl mx-auto leading-relaxed">
+                The Intelligent Liquidity Layer. Execute complex on-chain intent via human intuition or agent automation.
+            </p>
         </div>
 
-        <!-- Cards Row -->
-        <div class="flex flex-col md:flex-row gap-6 w-full max-w-5xl mx-auto mb-10">
+        <!-- Identity Choice -->
+        <div class="flex flex-col md:flex-row gap-5 w-full max-w-5xl mx-auto mb-8">
             <!-- Path: Human -->
             <div class="flex-1 path-card p-6 md:p-8 group cursor-pointer">
-                <div class="w-10 h-10 bg-white/5 rounded-xl mb-4 flex items-center justify-center border border-white/5 group-hover:woo-gradient-bg group-hover:text-wooBlack transition-all">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center border border-white/5 group-hover:woo-gradient-bg group-hover:text-wooBlack transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">I'm a Human</h3>
                 </div>
-                <h3 class="text-xl font-bold mb-2">I'm a Human</h3>
                 <p class="text-wooTextSec text-sm mb-6 leading-relaxed">
                     Swap with zero slippage, trade perps with up to 50x leverage, and stake WOO to earn real yield.
                 </p>
@@ -168,59 +165,47 @@
 
             <!-- Path: Agent -->
             <div class="flex-1 path-card p-6 md:p-8 group cursor-pointer border-wooCyan/20 bg-wooCyan/[0.02]">
-                <div class="w-10 h-10 bg-wooCyan/10 rounded-xl mb-4 flex items-center justify-center border border-wooCyan/20 group-hover:bg-wooCyan group-hover:text-wooBlack transition-all">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-10 h-10 bg-wooCyan/10 rounded-xl flex items-center justify-center border border-wooCyan/20 group-hover:bg-wooCyan group-hover:text-wooBlack transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3 class="text-xl font-bold woo-gradient-text">I'm an Agent</h3>
                 </div>
-                <h3 class="text-xl font-bold mb-2 woo-gradient-text">I'm an Agent</h3>
-                <p class="text-wooTextSec text-sm mb-6 leading-relaxed">Scale operations on-chain via LLM-native skill protocols and skill.md.</p>
-                <div class="mt-auto bg-black/40 rounded-lg p-3 border border-wooLine font-mono text-[10px] text-wooCyan/70">
-                    <div class="mb-1 text-white/20 uppercase tracking-tighter">Endpoint</div>
-                    https://woofi.com/skill.md
+                <div class="space-y-4 text-sm mb-6">
+                    <div>
+                        <p class="text-white/20 text-[10px] uppercase mb-1">Definition & Context</p>
+                        <div class="flex gap-4">
+                            <a href="/skill.md" class="text-wooCyan hover:underline">skill.md</a>
+                            <a href="/llms.txt" class="text-wooCyan hover:underline">llms.txt</a>
+                        </div>
+                    </div>
+                    <div class="bg-black/40 rounded-lg p-3 border border-wooLine font-mono text-[11px] text-wooCyan/70">
+                        $ openclaw skill install woofi
+                    </div>
                 </div>
+                <div class="text-[10px] font-black tracking-widest uppercase text-wooTextSec mt-auto">Scale on-chain intent →</div>
             </div>
         </div>
 
         <!-- Stats Row -->
-        <div class="flex flex-wrap justify-center gap-10 md:gap-20 py-6 border-y border-wooLine">
-            <div class="stat-item">
-                <div class="stat-val">$48.2B+</div>
-                <div class="stat-lab">Volume Traded</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-val">1.2M+</div>
-                <div class="stat-lab">Agent Trade Count</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-val">850+</div>
-                <div class="stat-lab">Agent Integrations</div>
-            </div>
+        <div class="flex flex-wrap justify-center gap-10 md:gap-16 py-4 border-y border-wooLine">
+            <div class="stat-item"><div class="stat-val">$48.2B+</div><div class="stat-lab">Volume Traded</div></div>
+            <div class="stat-item"><div class="stat-val">1.2M+</div><div class="stat-lab">Agent Trades</div></div>
+            <div class="stat-item"><div class="stat-val">850+</div><div class="stat-lab">Integrations</div></div>
         </div>
 
     </main>
 
-    <!-- Footer (Official Replication) -->
-    <footer class="bg-wooBlack px-8 py-12 border-t border-wooLine">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center"><div class="w-2.5 h-2.5 bg-wooBlack rounded-full"></div></div>
-                    <span class="text-lg font-bold">WOOFi</span>
-                </div>
-                <div class="flex gap-6 text-wooGray text-sm">
-                    <a href="#" class="hover:text-white transition">Twitter</a>
-                    <a href="#" class="hover:text-white transition">Discord</a>
-                    <a href="#" class="hover:text-white transition">Telegram</a>
-                    <a href="#" class="hover:text-white transition">Medium</a>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row justify-between border-t border-wooLine pt-8 text-[12px] text-wooGray gap-4">
-                <div class="flex flex-wrap gap-6">
-                    <a href="#" class="hover:text-white">Terms of Service</a>
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Cookie Policy</a>
-                </div>
-                <div>© 2026 WOOFi. All rights reserved.</div>
-            </div>
+    <!-- Minimized Footer -->
+    <footer class="h-10 bg-[#07080A] px-8 border-t border-wooLine flex items-center justify-between text-[11px] text-wooGray">
+        <div class="flex items-center gap-4">
+            <span>© 2026 WOO. All Rights Reserved.</span>
+        </div>
+        <div class="flex gap-4 items-center">
+            <a href="#" class="hover:text-white">Product feedback</a>
+            <a href="#" class="hover:text-white">Careers</a>
+            <a href="#" class="hover:text-white">Docs</a>
+            <a href="#" class="hover:text-white">Developers</a>
         </div>
     </footer>
 
