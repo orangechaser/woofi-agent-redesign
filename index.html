@@ -14,7 +14,7 @@
                         wooBlack: '#07080A',    // DN-10
                         wooDarker: '#131519',   // DN-9
                         wooDark: '#181C23',     // DN-8
-                        wooCyan: '#00B5FF',     // Brand Core (from SVG)
+                        wooCyan: '#00B5FF',     
                         wooLine: 'rgba(255, 255, 255, 0.08)',
                         wooTextMain: '#FFFFFF',
                         wooTextSec: 'rgba(255, 255, 255, 0.54)',
@@ -36,6 +36,9 @@
             background: linear-gradient(90deg, #47fcaa 0%, #00b5ff 50%, #1d4ab3 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .woo-gradient-bg {
+            background: linear-gradient(90deg, #47fcaa 0%, #00b5ff 100%);
         }
         .nav-link { color: rgba(255, 255, 255, 0.54); font-weight: 500; font-size: 14px; transition: color 0.2s; }
         .nav-link:hover { color: #FFFFFF; }
@@ -68,53 +71,69 @@
             border: 1px solid rgba(255,255,255,0.08); 
             border-radius: 24px; 
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
         }
         .path-card:hover { border-color: rgba(0, 181, 255, 0.4); transform: translateY(-4px); background: #181C23; }
-        .hero-section { min-height: calc(100vh - 64px); display: flex; flex-direction: column; justify-content: center; padding-top: 20px; padding-bottom: 20px; }
+        
+        /* Dropdown Style */
+        .dropdown-menu { 
+            display: none; 
+            position: absolute; 
+            top: 100%; 
+            right: 0; 
+            background: #131519; 
+            border: 1px solid rgba(255,255,255,0.08); 
+            border-radius: 12px; 
+            padding: 8px; 
+            min-width: 160px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .group:hover .dropdown-menu { display: block; }
+        .dropdown-item { padding: 8px 12px; border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.54); transition: all 0.2s; }
+        .dropdown-item:hover { background: rgba(255,255,255,0.05); color: #FFFFFF; }
     </style>
 </head>
 <body class="grid-bg min-h-screen flex flex-col">
 
-    <!-- Header (Official Logo Integration) -->
+    <!-- Header (Updated Links + More Dropdown) -->
     <nav class="h-16 flex justify-between items-center px-8 sticky top-0 z-50 bg-[#07080A]/90 backdrop-blur-xl border-b border-wooLine">
         <div class="flex items-center gap-10">
             <div class="flex items-center">
-                <!-- Official WOOFi Logo from SVG Source -->
-                <svg id="WOOFi_Logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 265.91 54" class="h-7 w-auto">
+                <svg id="WOOFi_Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 265.91 54" class="h-7 w-auto">
                     <defs>
                         <linearGradient id="woo_grad" x1="242.02" y1="-2.26" x2="204.93" y2="50.71" gradientUnits="userSpaceOnUse">
-                            <stop offset="0" stop-color="#47fcaa"/><stop offset=".5" stop-color="#00b5ff"/><stop offset=".58" stop-color="#01aefa"/><stop offset=".69" stop-color="#069dee"/><stop offset=".81" stop-color="#0d81da"/><stop offset=".95" stop-color="#185abe"/><stop offset="1" stop-color="#1d4ab3"/>
+                            <stop offset="0" stop-color="#47fcaa"/><stop offset=".5" stop-color="#00b5ff"/><stop offset="1" stop-color="#1d4ab3"/>
                         </linearGradient>
                     </defs>
-                    <g id="Layer_6">
-                        <path fill="#fff" d="m108.57,0c-14.91,0-27,12.09-27,27s12.09,27,27,27,27-12.09,27-27S123.48,0,108.57,0Zm0,41.5c-8.01,0-14.5-6.49-14.5-14.5s6.49-14.5,14.5-14.5,14.5,6.49,14.5,14.5-6.49,14.5-14.5,14.5Z"/>
-                        <path fill="#fff" d="m171.57,0c-14.91,0-27,12.09-27,27s12.09,27,27,27,27-12.09,27-27S186.48,0,171.57,0Zm0,41.5c-8.01,0-14.5-6.49-14.5-14.5s6.49-14.5,14.5-14.5,14.5,6.49,14.5,14.5-6.49,14.5-14.5,14.5Z"/>
-                        <path fill="#fff" d="m0,1h13.07l10.27,33.58,7-17.33c.92-2.27,3.12-3.75,5.56-3.75h4.98c2.45,0,4.65,1.48,5.56,3.75l7,17.33,3.85-12.58h13.07l-8.18,26.75c-.77,2.52-3.1,4.25-5.74,4.25h-4.58c-2.45,0-4.65-1.48-5.56-3.75l-7.91-19.57-7.91,19.57c-.92,2.27-3.12,3.75-5.56,3.75h-4.58c-2.64,0-4.97-1.72-5.74-4.25L0,1Z"/>
-                        <polygon fill="#fff" points="63.71 1 59.89 13.5 72.96 13.5 76.79 1 63.71 1"/>
-                        <path fill="url(#woo_grad)" d="m241.91,13.5V1h-22.25c-5.52,0-10,4.48-10,10v42.5h12v-19.5h20.25v-12h-20.25v-8.5h20.25Z"/>
-                        <rect fill="url(#woo_grad)" x="253.91" y="1" width="12" height="12.5"/>
-                        <rect fill="url(#woo_grad)" x="253.91" y="22" width="12" height="31.5"/>
+                    <g fill="#fff">
+                        <path d="m108.57,0c-14.91,0-27,12.09-27,27s12.09,27,27,27,27-12.09,27-27S123.48,0,108.57,0Zm0,41.5c-8.01,0-14.5-6.49-14.5-14.5s6.49-14.5,14.5-14.5,14.5,6.49,14.5,14.5-6.49,14.5-14.5,14.5Z"/><path d="m171.57,0c-14.91,0-27,12.09-27,27s12.09,27,27,27,27-12.09,27-27S186.48,0,171.57,0Zm0,41.5c-8.01,0-14.5-6.49-14.5-14.5s6.49-14.5,14.5-14.5,14.5,6.49,14.5,14.5-6.49,14.5-14.5,14.5Z"/><path d="m0,1h13.07l10.27,33.58,7-17.33c.92-2.27,3.12-3.75,5.56-3.75h4.98c2.45,0,4.65,1.48,5.56,3.75l7,17.33,3.85-12.58h13.07l-8.18,26.75c-.77,2.52-3.1,4.25-5.74,4.25h-4.58c-2.45,0-4.65-1.48-5.56-3.75l-7.91-19.57-7.91,19.57c-.92,2.27-3.12,3.75-5.56,3.75h-4.58c-2.64,0-4.97-1.72-5.74-4.25L0,1Z"/><polygon points="63.71 1 59.89 13.5 72.96 13.5 76.79 1 63.71 1"/>
                     </g>
+                    <path fill="url(#woo_grad)" d="m241.91,13.5V1h-22.25c-5.52,0-10,4.48-10,10v42.5h12v-19.5h20.25v-12h-20.25v-8.5h20.25Z"/><rect fill="url(#woo_grad)" x="253.91" y="1" width="12" height="12.5"/><rect fill="url(#woo_grad)" x="253.91" y="22" width="12" height="31.5"/>
                 </svg>
             </div>
             <div class="hidden lg:flex items-center gap-7">
-                <a href="#" class="nav-link text-white font-bold">Home</a>
-                <a href="#" class="nav-link">Swap</a>
-                <a href="#" class="nav-link">Perps</a>
-                <a href="#" class="nav-link">Earn</a>
-                <a href="#" class="nav-link">Stake</a>
-                <div class="flex items-center gap-1 nav-link cursor-pointer group">
-                    More
-                    <svg class="w-3 h-3 group-hover:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <a href="https://woofi.com/swap/" class="nav-link">Swap</a>
+                <a href="https://woofi.com/" class="nav-link">Perps</a>
+                <a href="https://woofi.com/swap/earn" class="nav-link">Earn</a>
+                <a href="https://woofi.com/swap/stake" class="nav-link">Stake</a>
+                <div class="relative group h-16 flex items-center">
+                    <div class="flex items-center gap-1 nav-link cursor-pointer">
+                        More <svg class="w-3 h-3 group-hover:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item block">Docs</a>
+                        <a href="#" class="dropdown-item block">Analytics</a>
+                        <a href="#" class="dropdown-item block">Brand Kit</a>
+                        <a href="#" class="dropdown-item block">GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="launch-btn cursor-pointer">
+        <a href="https://woofi.com/" class="launch-btn">
             LAUNCH APP
-            <div class="circle-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </div>
-        </div>
+            <div class="circle-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+        </a>
     </nav>
 
     <!-- Main Hero -->
@@ -124,7 +143,7 @@
                 DeFi for <span class="woo-gradient-text">Humans.</span><br/>
                 Native for <span class="woo-gradient-text">Agents.</span>
             </h1>
-            <p class="text-wooTextSec text-[16px] md:text-[18px] max-w-xl mx-auto leading-relaxed">
+            <p class="text-wooTextSec text-[16px] md:text-[18px] max-w-xl mx-auto">
                 The Intelligent Liquidity Layer. Execute complex on-chain intent <br class="hidden md:block"/>
                 via human intuition or agent automation.
             </p>
@@ -134,12 +153,14 @@
         <div class="flex flex-col md:flex-row gap-6 w-full max-w-4xl mx-auto">
             <!-- Path: Human -->
             <div class="flex-1 path-card p-8 md:p-10 group cursor-pointer">
-                <div class="w-10 h-10 bg-white/5 rounded-xl mb-6 flex items-center justify-center border border-white/5 group-hover:bg-[#00B5FF] group-hover:text-wooBlack transition-all">
+                <div class="w-10 h-10 bg-white/5 rounded-xl mb-6 flex items-center justify-center border border-white/5 group-hover:woo-gradient-bg group-hover:text-wooBlack transition-all">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
-                <h3 class="text-xl md:text-2xl font-bold mb-3">I'm a Human</h3>
-                <p class="text-wooTextSec text-[14px] mb-6 leading-relaxed">Trade perps and earn yield with the most competitive pricing in DeFi.</p>
-                <div class="text-[10px] font-black tracking-widest uppercase" style="color: #00B5FF">Explore Features →</div>
+                <h3 class="text-xl md:text-2xl font-bold mb-3 text-white">I'm a Human</h3>
+                <p class="text-wooTextSec text-[14px] mb-8 leading-relaxed">Professional trading and yield protocols accessible to everyone.</p>
+                <a href="https://woofi.com/" class="mt-auto woo-gradient-bg text-wooBlack font-bold py-3 px-6 rounded-xl text-sm text-center hover:opacity-90 transition-all">
+                    Start Trading
+                </a>
             </div>
 
             <!-- Path: Agent -->
@@ -148,10 +169,10 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-3 woo-gradient-text">I'm an Agent</h3>
-                <p class="text-wooTextSec text-[14px] mb-6 leading-relaxed">Scale operations on-chain via LLM-native skill protocols and skill.md.</p>
-                <div class="bg-black/40 rounded-lg p-3 border border-wooLine">
-                    <code class="text-[11px] font-mono text-[#00B5FF]/80">openclaw install @woofi/agent</code>
-                </div>
+                <p class="text-wooTextSec text-[14px] mb-8 leading-relaxed">Integrate WOOFi capabilities via our open-standard <span class="text-wooCyan">skill.md</span> protocol.</p>
+                <a href="/skill.md" class="mt-auto bg-wooDark text-wooCyan border border-wooCyan/30 font-bold py-3 px-6 rounded-xl text-sm text-center hover:bg-wooCyan hover:text-wooBlack transition-all">
+                    Read skill.md
+                </a>
             </div>
         </div>
     </main>
@@ -161,7 +182,7 @@
         <div class="max-w-4xl mx-auto flex justify-center gap-12 text-[10px] font-bold uppercase tracking-widest text-wooTextSec">
             <a href="/llms.txt" class="hover:text-[#00B5FF] transition-colors">llms.txt</a>
             <a href="/skill.md" class="hover:text-[#00B5FF] transition-colors">skill.md</a>
-            <a href="#" class="hover:text-[#00B5FF] transition-colors">API Docs</a>
+            <a href="#" class="hover:text-[#00B5FF] transition-colors">Documentation</a>
         </div>
     </footer>
 
