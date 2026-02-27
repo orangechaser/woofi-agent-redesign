@@ -92,11 +92,22 @@
         .group:hover .dropdown-menu { display: block; }
         .dropdown-item { padding: 8px 12px; border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.54); transition: all 0.2s; }
         .dropdown-item:hover { background: rgba(255,255,255,0.05); color: #FFFFFF; }
+
+        /* Agent Terminal Style */
+        .agent-terminal {
+            background: #07080A;
+            border: 1px solid rgba(0, 181, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            position: relative;
+        }
     </style>
 </head>
 <body class="grid-bg min-h-screen flex flex-col">
 
-    <!-- Header (Updated Links + More Dropdown) -->
+    <!-- Header -->
     <nav class="h-16 flex justify-between items-center px-8 sticky top-0 z-50 bg-[#07080A]/90 backdrop-blur-xl border-b border-wooLine">
         <div class="flex items-center gap-10">
             <div class="flex items-center">
@@ -163,16 +174,38 @@
                 </a>
             </div>
 
-            <!-- Path: Agent -->
+            <!-- Path: Agent (Structured for LLMs) -->
             <div class="flex-1 path-card p-8 md:p-10 group cursor-pointer border-[#00B5FF]/20 bg-[#00B5FF]/[0.02]">
                 <div class="w-10 h-10 bg-[#00B5FF]/10 rounded-xl mb-6 flex items-center justify-center border border-[#00B5FF]/20 group-hover:bg-[#00B5FF] group-hover:text-wooBlack transition-all">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-3 woo-gradient-text">I'm an Agent</h3>
-                <p class="text-wooTextSec text-[14px] mb-8 leading-relaxed">Integrate WOOFi capabilities via our open-standard <span class="text-wooCyan">skill.md</span> protocol.</p>
-                <a href="/skill.md" class="mt-auto bg-wooDark text-wooCyan border border-wooCyan/30 font-bold py-3 px-6 rounded-xl text-sm text-center hover:bg-wooCyan hover:text-wooBlack transition-all">
-                    Read skill.md
-                </a>
+                <p class="text-wooTextSec text-[14px] mb-6 leading-relaxed">Consume liquidity via LLM-native skill protocols. Follow the WOOFi Agent Protocol below.</p>
+                
+                <!-- Structured Data for Agents -->
+                <div class="agent-terminal mt-auto">
+                    <div class="flex justify-between items-center mb-2 border-b border-white/10 pb-2">
+                        <span class="text-[10px] text-wooCyan font-bold tracking-widest uppercase">Agent Protocol v1.0</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-white/30 text-[10px] uppercase mb-1">Definition File</p>
+                            <a href="/skill.md" class="text-wooCyan hover:underline">https://woofi.com/skill.md</a>
+                        </div>
+                        <div>
+                            <p class="text-white/30 text-[10px] uppercase mb-1">Context File</p>
+                            <a href="/llms.txt" class="text-wooCyan hover:underline">https://woofi.com/llms.txt</a>
+                        </div>
+                        <div class="pt-2">
+                            <code class="text-green-400 opacity-80">$ openclaw skill install woofi</code>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
