@@ -14,7 +14,7 @@
                         wooBlack: '#07080A',
                         wooDarker: '#131519',
                         wooDark: '#181C23',
-                        wooCardAlt: '#1E2329', // Lighter terminal bg
+                        wooCardAlt: '#1E2329',
                         wooCyan: '#00B5FF',     
                         wooLine: 'rgba(255, 255, 255, 0.08)',
                         wooTextMain: '#FFFFFF',
@@ -92,7 +92,7 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex;
             flex-direction: column;
-            min-height: 360px;
+            min-height: 380px;
         }
         .path-card:hover { border-color: rgba(0, 181, 255, 0.4); transform: translateY(-8px); background: #181C23; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         
@@ -103,8 +103,8 @@
 
         /* Brightened Terminal */
         .agent-terminal {
-            background: #1E2329; /* Brighter neutral */
-            border: 1px solid rgba(0, 181, 255, 0.15); /* Brighter border */
+            background: #1E2329;
+            border: 1px solid rgba(0, 181, 255, 0.15);
             border-radius: 12px;
             padding: 18px;
             font-family: 'JetBrains Mono', monospace;
@@ -124,6 +124,25 @@
             z-index: 100;
         }
         .group:hover .dropdown-menu { display: block; }
+        
+        /* Ghost Button Style A */
+        .ghost-btn {
+            border: 1px solid rgba(0, 181, 255, 0.3);
+            color: #00B5FF;
+            font-weight: 700;
+            padding: 10px 4px;
+            border-radius: 12px;
+            font-size: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            background: transparent;
+            backdrop-filter: blur(4px);
+        }
+        .ghost-btn:hover {
+            border-color: #00B5FF;
+            background: rgba(0, 181, 255, 0.1);
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body class="grid-bg min-h-screen flex flex-col">
@@ -188,10 +207,17 @@
                 <p class="text-wooTextSec text-[16px] mb-10 leading-relaxed">
                     Swap with ultra-low slippage, trade perps with up to 50x leverage, or deposit single assets and WOO to capture premium real yield.
                 </p>
-                <a href="https://woofi.com/" class="mt-auto woo-gradient-bg text-wooBlack font-bold py-3.5 px-6 rounded-2xl text-[15px] text-center hover:opacity-90 hover:scale-[1.02] transition-all animate-pulse-slow shadow-[0_0_40px_rgba(0,181,255,0.1)]">Start Trading</a>
+                
+                <!-- NEW GHOST BUTTONS START HERE -->
+                <div class="mt-auto grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <a href="https://woofi.com/swap/" class="ghost-btn">Swap</a>
+                    <a href="https://woofi.com/" class="ghost-btn">Perps</a>
+                    <a href="https://woofi.com/swap/earn" class="ghost-btn">Earn</a>
+                    <a href="https://woofi.com/swap/stake" class="ghost-btn">Stake</a>
+                </div>
             </div>
 
-            <!-- Path: Agent (Brightened Terminal Style) -->
+            <!-- Path: Agent -->
             <div class="flex-1 path-card p-10 group cursor-pointer border-wooCyan/20 bg-wooCyan/[0.02]">
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-10 h-10 bg-wooCyan/10 rounded-xl flex items-center justify-center border border-wooCyan/20 group-hover:bg-wooCyan group-hover:text-wooBlack transition-all duration-500">
